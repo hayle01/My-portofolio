@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "./ThemeToggle";
 
 const links = [
     { href: "/", label: "Home" },
@@ -40,6 +41,7 @@ export function Navbar() {
                         </li>
                     );
                 })}
+            <ThemeToggle />
             </ul>
         </nav>
     );

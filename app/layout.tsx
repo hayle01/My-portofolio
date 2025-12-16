@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Noto_Sans } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/lib/theme-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,20 +20,28 @@ export const metadata: Metadata = {
 
 import SmoothScrolling from "@/components/SmoothScrolling";
 
+const notoSans = Noto_Sans({variable:'--font-sans'});
+
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning={true} className={notoSans.variable}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased text-white selection:bg-white/20`}
       >
         <SmoothScrolling>
-          <main className="min-h-screen">
-            {children}
-          </main>
+          <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
         </SmoothScrolling>
       </body>
     </html>
