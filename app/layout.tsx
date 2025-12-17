@@ -36,7 +36,7 @@ export default function RootLayout({
         <SmoothScrolling>
           <ThemeProvider
           attribute="class"
-          defaultTheme="light"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
